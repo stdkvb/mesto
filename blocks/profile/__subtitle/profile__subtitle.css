@@ -1,0 +1,14 @@
+.profile__subtitle {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 1080px) {
+    .profile__subtitle {
+        font-weight: normal;
+        font-size: 14px;
+        justify-self: center;
+    }
+}

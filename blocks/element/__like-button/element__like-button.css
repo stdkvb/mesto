@@ -1,0 +1,11 @@
+.element__like-button {
+    grid-area: like-button;
+    width: 22px;
+    height: 19px;
+    justify-self: flex-end;
+    padding: 0;
+    margin: 30px 20px 30px 30px;
+    border: none;
+    background-color: #ffffff;
+    
+}
