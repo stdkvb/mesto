@@ -8,6 +8,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
 }
 
 @media screen and (max-width: 1080px) {
@@ -16,4 +19,9 @@
         height: 18px;
         margin-top: 8px;
     }
+}
+
+.profile__edit-button:hover {
+    opacity: 0.6;    
+  }
 }

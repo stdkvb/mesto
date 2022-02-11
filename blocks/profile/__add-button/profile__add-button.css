@@ -6,6 +6,9 @@
     background-color: #000000;
     padding: 0;
     margin: 35px 0 35px 0;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
 }
 
 @media screen and (max-width: 1080px) {
@@ -20,4 +23,9 @@
     .profile__add-button {
         width: 282px;
     }
+}
+
+.profile__add-button:hover {
+    opacity: 0.6;    
+  }
 }

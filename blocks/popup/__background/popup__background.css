@@ -1,0 +1,20 @@
+.popup__background {
+    width: 430px;
+    height: 330px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 40px;
+    bottom: 40px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    .popup__background {
+        width: 282px;
+        height: 322px;
+        left: 0;
+        bottom: 0;
+    } 
+ }

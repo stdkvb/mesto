@@ -7,5 +7,12 @@
     margin: 30px 20px 30px 30px;
     border: none;
     background-color: #ffffff;
-    
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.element__like-button:hover {
+    opacity: 0.5;    
+  }
 }
