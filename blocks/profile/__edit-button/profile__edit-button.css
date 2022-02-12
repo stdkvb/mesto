@@ -8,6 +8,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(../../../images/edit-button.svg);
+    background-position: center;
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
     transition-property: opacity;
     transition-duration: 0.3s;
     transition-timing-function: linear;
@@ -18,6 +22,7 @@
         width: 18px;
         height: 18px;
         margin-top: 8px;
+        background-size: 7.5px 7.5px;
     }
 }
 
