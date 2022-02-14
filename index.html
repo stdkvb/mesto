@@ -23,8 +23,8 @@
           <button class="profile__add-button" type="button"></button>
       </section>
 
-      <section>
-          <ul class="elements">
+      <section class="elements">
+          <ul class="elements__list">
             <li class="element">
                 <img class="element__img" src="./images/austria.jpg" alt="картинка Австрия">
                 <h2 class="element__title">Австрия</h2>
@@ -65,10 +65,10 @@
     <div class="popup">
         <div class="popup__container">
             <button class="popup__close-button" type="button"></button>
-            <form class="popup__background" name="profileEditForm">                
+            <form class="popup__form" name="profileEditForm">                
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <input class="popup__input popup__name-input" type="text" name="name">
-                <input class="popup__input popup__job-input" type="text" name="job">
+                <input class="popup__input popup__input_name" type="text" name="name" placeholder="Имя">
+                <input class="popup__input popup__input_job" type="text" name="job" placeholder="О себе">
                 <button class="popup__save-button" type="submit">Сохранить</button>
             </form>
         </div>

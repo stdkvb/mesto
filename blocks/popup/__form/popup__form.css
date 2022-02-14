@@ -1,4 +1,4 @@
-.popup__background {
+.popup__form {
     width: 430px;
     background-color: #ffffff;
     position: absolute;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .popup__background {
+    .popup__form {
         width: 282px;
         left: 0;
         bottom: 0;
