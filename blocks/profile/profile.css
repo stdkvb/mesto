@@ -1,5 +1,4 @@
 .profile {
-    width: calc(100% - 2*200px);
     margin: 40px auto 0 auto;
     display: grid;
     grid-template-columns: 120px 1fr 150px;

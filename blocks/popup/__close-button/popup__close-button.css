@@ -7,12 +7,14 @@
     border: none;
     padding: 0;
     background-color: transparent;
-    background-image: url(../../../images/Close\ Icon.svg);
+    background-image: url(../../../images/Close-Icon.svg);
     background-size: contain;
 }
 
 .popup__close-button:hover {
-    background-image: url(../../../images/Close\ Icon\ hover.svg);
+    background-color: #000000;
+    opacity: 0.6;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

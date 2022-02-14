@@ -12,15 +12,15 @@
       <img class="header__logo" src="./images/logo.svg" alt="логотип">
     </header>
 
-    <main>
+    <main class="content">
       <section class="profile">
           <img class="profile__avatar" src="./images/avatar.jpg" alt="ава">
           <div class="profile__info">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button"></button>
+              <button class="profile__edit-button" type="button"></button>
               <p class="profile__job">Исследователь океана</p>        
           </div>
-          <button class="profile__add-button"></button>
+          <button class="profile__add-button" type="button"></button>
       </section>
 
       <section>
@@ -28,32 +28,32 @@
             <li class="element">
                 <img class="element__img" src="./images/austria.jpg" alt="картинка Австрия">
                 <h2 class="element__title">Австрия</h2>
-                <button class="element__like-button"></button>
+                <button class="element__like-button" type="button"></button>
             </li>
             <li class="element">
                 <img class="element__img" src="./images/iceland.jpg" alt="картинка Исландия">
                 <h2 class="element__title">Исландия</h2>
-                <button class="element__like-button"></button>
+                <button class="element__like-button" type="button"></button>
             </li>
             <li class="element">
                 <img class="element__img" src="./images/washington.jpg" alt="картинка гора Вашингтон">
                 <h2 class="element__title">Штат Вашингтон</h2>
-                <button class="element__like-button"></button>
+                <button class="element__like-button" type="button"></button>
             </li>
             <li class="element">
                 <img class="element__img" src="./images/elbrus.jpg" alt="картинка Эльбрус">
                 <h2 class="element__title">Гора Эльбрус</h2>
-                <button class="element__like-button"></button>
+                <button class="element__like-button" type="button"></button>
             </li>
             <li class="element">
                <img class="element__img" src="./images/dombay.jpg" alt="картинка Домбай">
                <h2 class="element__title">Домбай</h2>
-               <button class="element__like-button"></button>
+               <button class="element__like-button" type="button"></button>
             </li>
             <li class="element">
                <img class="element__img" src="./images/karachaevsk.jpg" alt="картинка Карачаевск">
                <h2 class="element__title">Карачаево-Черкессия</h2>
-               <button class="element__like-button"></button>
+               <button class="element__like-button" type="button"></button>
             </li>
           </ul>
       </section>
@@ -64,16 +64,16 @@
 
     <div class="popup">
         <div class="popup__container">
-            <button class="popup__close-button"></button>
-            <form class="popup__background">                
-                <p class="popup__title">Редактировать профиль</p>
-                <input class="popup__name-input" type="text">
-                <input class="popup__job-input" type="text">
-                <input class="popup__save-button" type="submit" value="Сохранить">
+            <button class="popup__close-button" type="button"></button>
+            <form class="popup__background" name="profileEditForm">                
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <input class="popup__input popup__name-input" type="text" name="name">
+                <input class="popup__input popup__job-input" type="text" name="job">
+                <button class="popup__save-button" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
 
-    <script src="./index.js"></script>
+    <script src="./scripts/index.js"></script>
  </body>
 </html>
