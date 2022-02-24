@@ -23,38 +23,9 @@
           <button class="profile__add-button" type="button"></button>
       </section>
 
-      <section class="elements">
-          <ul class="elements__list">
-            <li class="element">
-                <img class="element__img" src="./images/austria.jpg" alt="картинка Австрия">
-                <h2 class="element__title">Австрия</h2>
-                <button class="element__like-button" type="button"></button>
-            </li>
-            <li class="element">
-                <img class="element__img" src="./images/iceland.jpg" alt="картинка Исландия">
-                <h2 class="element__title">Исландия</h2>
-                <button class="element__like-button" type="button"></button>
-            </li>
-            <li class="element">
-                <img class="element__img" src="./images/washington.jpg" alt="картинка гора Вашингтон">
-                <h2 class="element__title">Штат Вашингтон</h2>
-                <button class="element__like-button" type="button"></button>
-            </li>
-            <li class="element">
-                <img class="element__img" src="./images/elbrus.jpg" alt="картинка Эльбрус">
-                <h2 class="element__title">Гора Эльбрус</h2>
-                <button class="element__like-button" type="button"></button>
-            </li>
-            <li class="element">
-               <img class="element__img" src="./images/dombay.jpg" alt="картинка Домбай">
-               <h2 class="element__title">Домбай</h2>
-               <button class="element__like-button" type="button"></button>
-            </li>
-            <li class="element">
-               <img class="element__img" src="./images/karachaevsk.jpg" alt="картинка Карачаевск">
-               <h2 class="element__title">Карачаево-Черкессия</h2>
-               <button class="element__like-button" type="button"></button>
-            </li>
+      <section class="cards">
+          <ul class="cards__list">
+
           </ul>
       </section>
     </main>
@@ -73,6 +44,14 @@
             </form>
         </div>
     </div>
+
+    <template id="card-template">
+        <li class="card">
+            <img class="card__img" src="">
+            <h2 class="card__title"></h2>
+            <button class="card__like-button" type="button"></button>
+        </li>
+    </template>
 
     <script src="./scripts/index.js"></script>
  </body>
