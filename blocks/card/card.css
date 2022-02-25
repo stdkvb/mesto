@@ -7,4 +7,5 @@
     grid-template-areas:
         "img img"
         "title like-button";
+    position: relative;
 }
