@@ -99,7 +99,7 @@ function addSubmitHandler (evt) {
 const cardAddForm = document.querySelector('[name=cardAddForm]')
 cardAddForm.addEventListener('submit', addSubmitHandler);
 
-//лайк карточек
+//лайк карточке
 const likeButton = document.querySelector('.card__like-button'); 
 const likeButtons = Array.from(document.querySelectorAll('.card__like-button'));
 likeButtons.forEach((likeButton) => {
@@ -108,8 +108,15 @@ likeButtons.forEach((likeButton) => {
   });
 });
 
-
-
+//удаление карточки
+const deleteButton = document.querySelector('.card__delete-button'); 
+const deleteButtons = Array.from(document.querySelectorAll('.card__delete-button'));
+deleteButtons.forEach((deleteButton) => {
+  deleteButton.addEventListener('click', (event) => {
+    const card = event.target.closest('.card');
+    card.remove();
+  });
+});
 
 
   
