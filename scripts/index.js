@@ -118,6 +118,23 @@ deleteButtons.forEach((deleteButton) => {
   });
 });
 
+//попап просмотра картинки
+const pictureButton = document.querySelector('.card__img'); 
+const pictureButtons = Array.from(document.querySelectorAll('.card__img'));
+const picturePopup = document.querySelector('#picture-popup');
+pictureButtons.forEach((pictureButton) => {
+  pictureButton.addEventListener('click', (event) => {
+    const card = event.target.closest('.card');
+    picturePopup.classList.add('popup_opened');
+    picturePopup.querySelector('.popup__image').src = card.querySelector('.card__img').src;
+    picturePopup.querySelector('.popup__subtitle').textContent = card.querySelector('.card__title').textContent;
+  });
+});
 
-  
+const pictureCloseButton = document.querySelector('[name=picturePopupCloseButton]');
+function picturePopupClose() {
+  picturePopup.classList.remove('popup_opened');   
+}
+pictureCloseButton.addEventListener('click', picturePopupClose);
+
 
