@@ -30,13 +30,13 @@
       </section>
     </main>
     <footer class="footer">
-        <p class="footer__copyright">© 2022 Mesto Russia</p>
+        <p class="footer__copyright">© 2022 B.Sitdikov</p>
     </footer>
 
-    <div class="popup" id="edit-popup">
+    <div class="popup" id="editPopup">
         <div class="popup__container">
-            <button class="popup__close-button" type="button" name="editPopupCloseButton"></button>
-            <form class="popup__form" name="profileEditForm">                
+            <button class="popup__close-button" type="button"></button>
+            <form class="popup__form">                
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <input class="popup__input" type="text" name="profile-name" placeholder="Имя">
                 <input class="popup__input" type="text" name="profile-job" placeholder="О себе">
@@ -45,23 +45,23 @@
         </div>
     </div>
 
-    <div class="popup" id="add-popup">
+    <div class="popup" id="addPopup">
         <div class="popup__container">
-            <button class="popup__close-button" type="button" name="addPopupCloseButton"></button>
-            <form class="popup__form" name="cardAddForm">                
+            <button class="popup__close-button" type="button"></button>
+            <form class="popup__form">                
                 <h3 class="popup__title">Новое место</h3>
-                <input class="popup__input" type="text" name="place-name" placeholder="Название">
-                <input class="popup__input" type="text" name="place-link" placeholder="Ссылка на картинку">
+                <input class="popup__input" type="text" name="placeNameInput" placeholder="Название">
+                <input class="popup__input" type="text" name="placeLinkInput" placeholder="Ссылка на картинку">
                 <button class="popup__save-button" type="submit">Создать</button>
             </form>
         </div>
     </div>
-
-    <div class="popup" id="picture-popup">
+    
+    <div class="popup" id="imagePopup">
         <div class="popup__container popup__container_fullsize">
-            <button class="popup__close-button" type="button" name="picturePopupCloseButton"></button>
+            <button class="popup__close-button" type="button"></button>
             <img class="popup__image">
-            <p class="popup__subtitle">Камчатка</p>
+            <p class="popup__description">Камчатка</p>
         </div>
     </div>
 
