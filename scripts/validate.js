@@ -46,7 +46,7 @@ const checkValidity = (formElement, inputElement, formComponents) => {
 //слушатели
 const setEventListeners = (formElement, formComponents) => {
     const inputList = Array.from(formElement.querySelectorAll(formComponents.inputSelector));
-    const buttonElement = formElement.querySelector(formComponents.submitButtonSelector);
+    const buttonElement =    formElement.querySelector(formComponents.submitButtonSelector);
     toggleButtonState(inputList, buttonElement, formComponents);
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', (event) => {
@@ -61,7 +61,7 @@ enableValidation = (formComponents) => {
     formList.forEach(formElement => {
         formElement.addEventListener('submit', (event) => {
             event.preventDefault();
-        });
+          });
         setEventListeners(formElement, formComponents);
     });
 };

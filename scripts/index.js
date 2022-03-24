@@ -44,6 +44,7 @@ const cardAddButton = document.querySelector('.profile__add-button');
 const placeNameInput = document.querySelector('[name=placeNameInput]');
 const placeLinkInput = document.querySelector('[name=placeLinkInput]');
 const popups = document.querySelectorAll('.popup');
+const popupSubmitButton = popupCardAdd.querySelector('.popup__submit-button');
 
 //создание карточки
 function renderCard(titleValue, imageValue) {
@@ -96,18 +97,12 @@ function submitProfileForm (evt) {
   closePopup(popupProfileEdit);   
 };
 
-//открытие попапа полной картинки
-function openImagePopup(titleValue, imageValue) {
-  popupImage.src = imageValue;
-  popupImage.alt = titleValue;
-  popupDescription.textContent = titleValue;
-  openPopup(popupFullSizeImage);
-};
-
 //открытие попапа добавления новой карточки
 function openAddPopup() {
   placeNameInput.value='';
   placeLinkInput.value='';
+  popupSubmitButton.classList.add('popup__submit-button_inactive');
+  popupSubmitButton.setAttribute('disabled', true);
   openPopup(popupCardAdd);
 };
 
@@ -116,6 +111,14 @@ function addSubmitHandler(event) {
   event.preventDefault();
   cardsList.prepend(renderCard(placeNameInput.value, placeLinkInput.value));
   closePopup(popupCardAdd);
+};
+
+//открытие попапа полной картинки
+function openImagePopup(titleValue, imageValue) {
+  popupImage.src = imageValue;
+  popupImage.alt = titleValue;
+  popupDescription.textContent = titleValue;
+  openPopup(popupFullSizeImage);
 };
 
 //закрытие попапа
