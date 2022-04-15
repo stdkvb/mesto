@@ -1,3 +1,5 @@
+import { Card } from './Card.js'
+
 //карточки мест
 const initialCards = [
     {
@@ -46,35 +48,32 @@ const placeLinkInput = document.querySelector('[name=placeLinkInput]');
 const popups = document.querySelectorAll('.popup');
 const popupSubmitButton = popupCardAdd.querySelector('.popup__submit-button');
 
-//создание карточки
-function renderCard(titleValue, imageValue) {
-  const createCard = cardTemplate.content.cloneNode(true);
-  createCard.querySelector('.card__title').textContent=titleValue;
-  const cardImage = createCard.querySelector('.card__img');
-  cardImage.src=imageValue;
-  cardImage.alt=titleValue;
-  //лайк карточки
-  const cardLikeButton = createCard.querySelector('.card__like-button');
-  cardLikeButton.addEventListener ('click', function (event) {
-    event.target.classList.toggle('card__like-button_active');
-  });
-  //удаление карточки
-  const cardDeleteButton = createCard.querySelector('.card__delete-button');
-  cardDeleteButton.addEventListener ('click', function (event) {
-    event.target.closest('.card').remove();
-  });
-  //просмотр фото
-  cardImage.src = imageValue;
-  cardImage.addEventListener('click', () =>
-    openImagePopup(titleValue, imageValue)
-  );
-  return createCard;
+//элементы карточки
+const components = {
+  template: '#card-template',
+  like: '.card__like-button',
+  delete: '.card__delete-button',
+  image: '.card__img',
+  title: '.card__title',
+  imagePopup: openImagePopup,
 };
 
+//создание нового объекта карточки
+function createCard(name, link, components) {
+  const card = new Card(name, link, components);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
+//добавление карточки в разметку
+function addCard(item) {
+  cardsList.prepend(item);
+}
+
 //вывод начальных карточек
-initialCards.forEach((item) =>
-  cardsList.append(renderCard(item.name, item.link))
-);
+initialCards.forEach(function (item) {
+  addCard(createCard(item.name, item.link, components));
+});
 
 //общая функция открытия попапов
 function openPopup(popup) {
@@ -109,9 +108,10 @@ function openAddPopup() {
 //добавление новой карточки
 function addSubmitHandler(event) {
   event.preventDefault();
-  cardsList.prepend(renderCard(placeNameInput.value, placeLinkInput.value));
+  addCard(createCard(placeNameInput.value, placeLinkInput.value, components));
   closePopup(popupCardAdd);
 };
+
 
 //открытие попапа полной картинки
 function openImagePopup(titleValue, imageValue) {
@@ -121,13 +121,14 @@ function openImagePopup(titleValue, imageValue) {
   openPopup(popupFullSizeImage);
 };
 
+
 //закрытие попапа
 const closePopup = function () {
   const popupOpened = document.querySelector('.popup_opened');
   if (popupOpened) {
     popupOpened.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closePopupEsc);
   }
+  document.removeEventListener('keydown', closePopupEsc);
 };
 
 //закрытие попапа нажатием Esc
