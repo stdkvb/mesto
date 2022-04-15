@@ -53,8 +53,8 @@ class Card {
     this._elementImage.addEventListener('click', () => {
       this._openImagePopup(this._title, this._link);
     });
-  }
+  };
   
-}
+};
 
 export { Card };

@@ -1,4 +1,5 @@
-import { Card } from './Card.js'
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 
 //карточки мест
 const initialCards = [
@@ -31,7 +32,9 @@ const initialCards = [
 //объявление переменных
 const buttonEdit = document.querySelector('.profile__edit-button');
 const popupProfileEdit = document.querySelector('#editPopup');
+const formElementEdit = popupProfileEdit.querySelector('.popup__form');
 const popupCardAdd = document.querySelector('#addPopup');
+const formElementAdd = popupCardAdd.querySelector('.popup__form');
 const popupFullSizeImage = document.querySelector('#imagePopup');
 const popupImage = popupFullSizeImage.querySelector('.popup__image');
 const popupDescription = popupFullSizeImage.querySelector('.popup__description');
@@ -39,7 +42,6 @@ const nameInput = document.querySelector('[name=profile-name]');
 const profileName = document.querySelector('.profile__name');
 const jobInput = document.querySelector('[name=profile-job]');
 const profileJob = document.querySelector('.profile__job');
-const cardTemplate = document.querySelector('#card-template');
 const buttonsClosePopup = document.querySelectorAll('.popup__close-button');
 const cardsList = document.querySelector('.cards__list');
 const cardAddButton = document.querySelector('.profile__add-button');
@@ -48,7 +50,15 @@ const placeLinkInput = document.querySelector('[name=placeLinkInput]');
 const popups = document.querySelectorAll('.popup');
 const popupSubmitButton = popupCardAdd.querySelector('.popup__submit-button');
 
-//элементы карточки
+const validationSettings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_inactive',
+  inputErrorClass: 'popup__input_is_invalid',
+  errorClass: 'popup__input-error_active'
+};
+
 const components = {
   template: '#card-template',
   like: '.card__like-button',
@@ -145,6 +155,14 @@ const closePopupClickOverlay = function (event) {
   }
   closePopup();
 };
+
+//валидация формы редактирования профиля
+const popupEditFormValidation = new FormValidator(validationSettings,formElementEdit);
+popupEditFormValidation.enableValidation();
+
+//валидация формы добавления карточек
+const popupCardAddFormValidation = new FormValidator(validationSettings,formElementAdd);
+popupCardAddFormValidation.enableValidation();
 
 //обработчики событий
 buttonEdit.addEventListener('click', openEditPopup);
