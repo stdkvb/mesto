@@ -54,7 +54,6 @@ class Card {
       this._openImagePopup(this._title, this._link);
     });
   };
-  
 };
 
 export { Card };
