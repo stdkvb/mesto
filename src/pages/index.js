@@ -50,8 +50,8 @@ const cardList = new Section({
 cardList.setItems();
 
 //добавление новой карточки
-const popupFormAddCard = new PopupWithForm(popupCardAdd, handleSubmitForm => {
-  const card = createCard(handleSubmitForm);
+const popupFormAddCard = new PopupWithForm(popupCardAdd, formSubmit => {
+  const card = createCard(formSubmit);
   cardList.addItem(card);
 }
 )
@@ -59,8 +59,8 @@ popupFormAddCard.setEventListeners()
 
 //редактирование профиля
 const userInfo = new UserInfo(profileInfo)
-const popupFormEditProfile = new PopupWithForm(popupProfileEdit, handleSubmitForm => {
-    userInfo.setUserInfo(handleSubmitForm);
+const popupFormEditProfile = new PopupWithForm(popupProfileEdit, formSubmit => {
+    userInfo.setUserInfo(formSubmit);
   }
 )
 
@@ -81,9 +81,9 @@ cardAddButton.addEventListener('click', () => {
 });
 
 buttonEdit.addEventListener('click', () => {
-  const userData = userInfo.getUserInfo();
-  nameInput.value = userData.name;
-  jobInput.value = userData.job;
+  const {name, job} = userInfo.getUserInfo();
+  nameInput.value = name;
+  jobInput.value = job;
   popupEditFormValidation.resetValidation();
-  popupFormEditProfile.open();
+  popupFormEditProfile.open(); 
 });
