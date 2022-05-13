@@ -25,7 +25,6 @@
 
       <section class="cards">
           <ul class="cards__list">
-
           </ul>
       </section>
     </main>
@@ -39,15 +38,15 @@
             <form class="popup__form" name="profile-form" novalidate>                
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <section class="popup__form-section">
-                    <input class="popup__input" id="profile-name" type="text" name="profile-name" placeholder="Имя" required minlength="2" maxlength="40">
+                    <input class="popup__input profile-name" id="profile-name" type="text" name="name" placeholder="Имя" required minlength="2" maxlength="40">
                     <span class="popup__input-error profile-name-error"></span>
                 </section>
                 <section class="popup__form-section">
-                    <input class="popup__input" id="profile-job" type="text" name="profile-job" placeholder="О себе" required minlength="2" maxlength="200">
+                    <input class="popup__input profile-job" id="profile-job" type="text" name="job" placeholder="О себе" required minlength="2" maxlength="200">
                     <span class="popup__input-error profile-job-error"></span>
                 </section>
                 <button class="popup__submit-button" type="submit">Сохранить</button>
-            </form>
+            </form> 
         </div>
     </div>
 
@@ -57,11 +56,11 @@
             <form class="popup__form" novalidate>                
                 <h3 class="popup__title">Новое место</h3>
                 <section class="popup__form-section">
-                    <input class="popup__input" id="place-name" type="text" name="placeNameInput" placeholder="Название" required minlength="2" maxlength="30">
+                    <input class="popup__input" id="place-name" type="text" name="name" placeholder="Название" required minlength="2" maxlength="30">
                     <span class="popup__input-error place-name-error"></span>
                 </section>
                 <section class="popup__form-section">
-                    <input class="popup__input" id="place-url" type="url" name="placeLinkInput" placeholder="Ссылка на картинку" required>
+                    <input class="popup__input" id="place-url" type="url" name="link" placeholder="Ссылка на картинку" required>
                     <span class="popup__input-error place-url-error"></span>
                 </section>
                 <button class="popup__submit-button" type="submit">Создать</button>
@@ -77,7 +76,7 @@
         </div>
     </div>
 
-    <template id="card-template">
+    <template class="card-template">
         <li class="card">
             <img class="card__img">
             <h2 class="card__title"></h2>
@@ -86,7 +85,7 @@
         </li>
     </template>
 
-    <script src="./scripts/index.js" type="module"></script>
+    <script src="./pages/index.js" type="module"></script>
     <script src="./scripts/Сard.js" type="module"></script>
     <script src="./scripts/FormValidator.js" type="module"></script>
 
