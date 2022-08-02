@@ -6,6 +6,6 @@
     display: grid;
     grid-template-areas:
         "img img"
-        "title like-button";
+        "title like-section";
     position: relative;
 }
