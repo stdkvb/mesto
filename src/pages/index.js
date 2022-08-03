@@ -64,9 +64,13 @@ api.getInitialCards()
   })
 
 //добавление новой карточки
-const popupFormAddCard = new PopupWithForm(popupCardAdd, formSubmit => {
-  const card = createCard(formSubmit);
-  cardList.addItem(card);
+const popupFormAddCard = new PopupWithForm(popupCardAdd, card => {
+  api.addCard(card)
+    .then(data => {
+      const card = createCard(data);
+      cardList.addItem(card);
+    })
+    .catch(err => console.log(err));
 }
 )
 popupFormAddCard.setEventListeners()

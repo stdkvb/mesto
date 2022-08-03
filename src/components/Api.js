@@ -1,3 +1,5 @@
+import { cardAddButton } from "../utils/constants";
+
 class Api {
     constructor(options) {
         this._baseUrl = options.baseUrl
@@ -20,7 +22,7 @@ class Api {
           .then(this._errorHandle)
     }
 
-    setUserInfo() {
+    setUserInfo(userInfo) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: "PATCH",
             headers: this._headers,
@@ -36,6 +38,18 @@ class Api {
         return fetch(`${this._baseUrl}/cards`, {
           method: "GET",
           headers: this._headers
+        })
+          .then(this._errorHandle)
+    }
+
+    addCard(card) {
+        return fetch(`${this._baseUrl}/cards`, {
+          method: "POST",
+          headers: this._headers,
+          body: JSON.stringify({
+              name: card.name,
+              link: card.link
+          })
         })
           .then(this._errorHandle)
     }

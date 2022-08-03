@@ -13,7 +13,7 @@ class UserInfo {
   
   setUserInfo({name, about}) {
     this._userName.textContent = name;
-    this._userJob.textContent = about;
+    this._userAbout.textContent = about;
   }
 };
 

@@ -5,7 +5,7 @@ class Section {
   }
 
   setItems(items) {
-    items.forEach((item) => {
+    items.reverse().forEach((item) => {
       this._renderer(item)
     });
   }
