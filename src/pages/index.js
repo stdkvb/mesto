@@ -61,7 +61,7 @@ const createCard = (data) => {
         card.deleteCard();
       })
     }
-  }, components, cardTemplate, userID);
+  }, components, cardTemplate, userID, api);
   return card.generateCard();
 }
 

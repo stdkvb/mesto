@@ -15,7 +15,8 @@ const components = {
   like: '.card__like-button',
   delete: '.card__delete-button',
   cardImage: '.card__img',
-  title: '.card__title'
+  title: '.card__title',
+  likeCounter: '.card__like-counter'
 };
 const validationSettings = {
   formSelector: '.popup__form',
