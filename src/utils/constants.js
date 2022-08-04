@@ -5,6 +5,7 @@ const formElementEdit = document.querySelector('#editPopup').querySelector('.pop
 const popupCardAdd = '#addPopup';
 const formElementAdd = document.querySelector('#addPopup').querySelector('.popup__form');
 const popupFullSizeImage = '#imagePopup';
+const popupDeleteCard = '#deletePopup';
 const nameInput = document.querySelector('.profile-name');
 const jobInput = document.querySelector('.profile-job');
 const cardListSelector = '.cards__list';
@@ -36,6 +37,7 @@ export {
     popupCardAdd,
     formElementAdd,
     popupFullSizeImage,
+    popupDeleteCard,
     nameInput,
     jobInput,
     cardListSelector,

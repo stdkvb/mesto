@@ -4,6 +4,7 @@ import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupDeleteCard } from '../components/PopupDeleteCard';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
@@ -16,6 +17,7 @@ import {
   popupCardAdd,
   formElementAdd,
   popupFullSizeImage,
+  popupDeleteCard,
   nameInput,
   jobInput,
   cardListSelector,
@@ -39,14 +41,27 @@ const api = new Api({
 const popupImage = new PopupWithImage(popupFullSizeImage);
 popupImage.setEventListeners()
 
+//удаление карточки
+const popupDelete = new PopupDeleteCard(popupDeleteCard);
+popupDelete.setEventListeners()
+
 //создание нового объекта карточки
 const createCard = (data) => {
   const card = new Card({
     data: data,
     handleCardClick: () => {
       popupImage.open(data);
+    },
+    handleDeleteClick: () => {
+      popupDelete.open();
+      popupDelete.setSubmitProcessing(() => {
+        api.deleteCard(data._id)
+          .then()
+          .catch(err => console.log(err));
+        card.deleteCard();
+      })
     }
-  }, components, cardTemplate);
+  }, components, cardTemplate, userID);
   return card.generateCard();
 }
 
@@ -86,9 +101,12 @@ const popupFormEditProfile = new PopupWithForm(popupProfileEdit, values => {
   }
 )
 
+let userID;
+
 api.getUserInfo()
-  .then(values => {
-    userInfo.setUserInfo(values)
+  .then(data => {
+    userInfo.setUserInfo(data);
+    userID = data._id;
   })
   .catch(err => {console.log(err)})
 

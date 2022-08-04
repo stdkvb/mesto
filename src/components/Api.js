@@ -54,6 +54,13 @@ class Api {
           .then(this._errorHandle)
     }
 
-};
+    deleteCard(id) {
+        return fetch(`${this._baseUrl}/cards${id}`, {
+            method: "DELETE",
+            headers: this._headers
+            })
+            .then(this._errorHandle)
+        }
+    }
 
 export { Api };
