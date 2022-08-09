@@ -11,6 +11,9 @@ import { Api } from '../components/Api.js';
 
 
 import {
+  avatarEditButton,
+  popupEditAvatar,
+  formElementAvatarEdit,
   buttonEdit,
   popupProfileEdit,
   formElementEdit,
@@ -78,6 +81,16 @@ api.getInitialCards()
     cardList.setItems(cardsData)
   })
 
+//редактирование аватара
+const popupFormAvatarEdit = new PopupWithForm(popupEditAvatar, (link) => {
+  api.editAvatar(link)
+    .then((data) => {
+      userInfo.setUserAvatar(data);
+    })
+    .catch(err => console.log(err));
+})
+popupFormAvatarEdit.setEventListeners();
+
 //добавление новой карточки
 const popupFormAddCard = new PopupWithForm(popupCardAdd, card => {
   api.addCard(card)
@@ -120,7 +133,16 @@ popupEditFormValidation.enableValidation();
 const popupCardAddFormValidation = new FormValidator(validationSettings,formElementAdd);
 popupCardAddFormValidation.enableValidation();
 
+//валидация формы редактированя аватара
+const popupEditAvatarValidation = new FormValidator(validationSettings,formElementAvatarEdit);
+popupEditAvatarValidation.enableValidation();
+
 //обработчики событий
+avatarEditButton.addEventListener('click', () => {
+  popupEditAvatarValidation.resetValidation();
+  popupFormAvatarEdit.open();
+})
+
 cardAddButton.addEventListener('click', () => {
   popupCardAddFormValidation.resetValidation();
   popupFormAddCard.open();

@@ -1,4 +1,7 @@
 //объявление переменных
+const avatarEditButton = document.querySelector('.profile__avatar-edit-button');
+const popupEditAvatar = '#editAvatarPopup';
+const formElementAvatarEdit = document.querySelector('#editAvatarPopup').querySelector('.popup__form');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const popupProfileEdit = '#editPopup';
 const formElementEdit = document.querySelector('#editPopup').querySelector('.popup__form');
@@ -28,10 +31,14 @@ const validationSettings = {
 };
 const profileInfo = {
   name: '.profile__name',
-  about: '.profile__job'
+  about: '.profile__job',
+  avatar: '.profile__avatar-image'
 };
 
 export {
+    avatarEditButton,
+    popupEditAvatar,
+    formElementAvatarEdit,
     buttonEdit,
     popupProfileEdit,
     formElementEdit,
