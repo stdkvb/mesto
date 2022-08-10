@@ -42,7 +42,7 @@ class Card {
       this._elementDeleteButton.classList.add('card__delete-button_disable');
     }
 
-    if(this._likes.some(like => like.id === this._userID)) {
+    if(this._likes.some(like => like._id === this._userID)) {
       this._elementLikeButton.classList.add('card__like-button_active');
     }
 

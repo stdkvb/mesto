@@ -31,7 +31,7 @@ import {
   profileInfo
 } from '../utils/constants.js';
 
-//API
+//подключение к серверу
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-47',
   headers: {
@@ -39,6 +39,16 @@ const api = new Api({
   'Content-Type': 'application/json'
   }
 });
+
+//информация о пользователе с сервера
+let userID;
+const userInfo = new UserInfo(profileInfo);
+api.getUserInfo()
+  .then(data => {
+    userInfo.setUserInfo(data);
+    userID = data._id;
+  })
+  .catch(err => {console.log(err)})
 
 //фулсайз картинка
 const popupImage = new PopupWithImage(popupFullSizeImage);
@@ -83,46 +93,42 @@ api.getInitialCards()
 
 //редактирование аватара
 const popupFormAvatarEdit = new PopupWithForm(popupEditAvatar, (link) => {
+  popupFormAvatarEdit.loading(true);
   api.editAvatar(link)
     .then((data) => {
       userInfo.setUserAvatar(data);
+      popupFormAvatarEdit.close();
     })
-    .catch(err => console.log(err));
+    .finally(() => popupFormAvatarEdit.loading(false))
+    .catch(err => console.log(err))
 })
 popupFormAvatarEdit.setEventListeners();
 
 //добавление новой карточки
 const popupFormAddCard = new PopupWithForm(popupCardAdd, card => {
+  popupFormAddCard.loading(true);
   api.addCard(card)
     .then(data => {
       const card = createCard(data);
       cardList.addItem(card);
+      popupFormAddCard.close();
     })
-    .catch(err => console.log(err));
-}
-)
+    .then(() => popupFormAddCard.loading(false))
+    .catch(err => console.log(err))
+})
 popupFormAddCard.setEventListeners()
 
 //редактирование профиля
-const userInfo = new UserInfo(profileInfo)
 const popupFormEditProfile = new PopupWithForm(popupProfileEdit, values => {
+  popupFormEditProfile.loading(true);
     api.setUserInfo(values)
       .then((data) => {
-        userInfo.setUserInfo(data)
+        userInfo.setUserInfo(data);
+        popupFormEditProfile.close();
       })
-      .catch((err) => console.log(err));
-  }
-)
-
-let userID;
-
-api.getUserInfo()
-  .then(data => {
-    userInfo.setUserInfo(data);
-    userID = data._id;
+      .finally(() => popupFormEditProfile.loading(false))
+      .catch((err) => console.log(err))
   })
-  .catch(err => {console.log(err)})
-
 popupFormEditProfile.setEventListeners();
 
 //валидация формы редактирования профиля

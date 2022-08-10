@@ -10,8 +10,7 @@ class Api {
         if(res.ok) {
           return res.json();
         }
-
-        return Promise.reject(`Ошибка № ${res.ok} – ${res.status}`)
+        return Promise.reject(`Ошибка: ${res.status}`)
     }
 
     getUserInfo() {
@@ -24,25 +23,25 @@ class Api {
 
     setUserInfo(userInfo) {
         return fetch(`${this._baseUrl}/users/me`, {
-            method: "PATCH",
-            headers: this._headers,
-            body: JSON.stringify({
-              name: userInfo.name,
-              about: userInfo.about
-            })
+          method: "PATCH",
+          headers: this._headers,
+          body: JSON.stringify({
+            name: userInfo.name,
+            about: userInfo.about
           })
-            .then(this._errorHandle)
+        })
+          .then(this._errorHandle)
     }
 
     editAvatar(link) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
-            method: "PATCH",
-            headers: this._headers,
-            body: JSON.stringify({
-              avatar: link.avatar
-            })
-           })
-           .then(this._errorHandle)
+          method: "PATCH",
+          headers: this._headers,
+          body: JSON.stringify({
+            avatar: link.avatar
+          })
+        })
+          .then(this._errorHandle)
     }
 
     getInitialCards() {
@@ -58,8 +57,8 @@ class Api {
           method: "POST",
           headers: this._headers,
           body: JSON.stringify({
-              name: card.name,
-              link: card.link
+            name: card.name,
+            link: card.link
           })
         })
           .then(this._errorHandle)
@@ -67,29 +66,27 @@ class Api {
 
     deleteCard(id) {
         return fetch(`${this._baseUrl}/cards${id}`, {
-            method: "DELETE",
-            headers: this._headers
-            })
-            .then(this._errorHandle)
+          method: "DELETE",
+          headers: this._headers
+        })
+          .then(this._errorHandle)
     }
 
     likeCard(id) {
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-            method: "PUT",
-            headers: this._headers
-          })
-            .then(this._errorHandle)
+          method: "PUT",
+          headers: this._headers
+        })
+          .then(this._errorHandle)
     }
 
     unlikeCard(id) {
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-            method: "DELETE",
-            headers: this._headers
-          })
-            .then(this._errorHandle)
+          method: "DELETE",
+          headers: this._headers
+        })
+          .then(this._errorHandle)
     }
-}
-
-    
-
+};
+ 
 export { Api };
