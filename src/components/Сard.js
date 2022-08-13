@@ -1,5 +1,5 @@
 class Card {
-  constructor({ data,  handleCardClick, handleDeleteClick }, components, template, userID, api) {
+  constructor({ data,  handleCardClick, handleDeleteClick, handleLikeCard, handleDislikeCard }, components, template, userID) {
     this._templateContent = document.querySelector(template).content;
     this._name = data.name;
     this._link = data.link;
@@ -7,6 +7,8 @@ class Card {
     this._likes = data.likes;
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
+    this._handleLikeCard = handleLikeCard;
+    this._handleDislikeCard = handleDislikeCard;
     this._like = components.like;
     this._delete = components.delete;
     this._cardImage = components.cardImage;
@@ -16,7 +18,6 @@ class Card {
     this._userID = userID;
     this._ownerID = data.owner._id;
     this._cardID = data._id;
-    this._api = api;
   }
 
   //копирование шаблона карточки
@@ -45,34 +46,26 @@ class Card {
     if(this._likes.some(like => like._id === this._userID)) {
       this._elementLikeButton.classList.add('card__like-button_active');
     }
-
+   
     this._setEventListeners();
     return this._element;
   
   }
 
   //лайк карточки
-  _isNotLiked() {
-    const likeCheck = this._elementLikeButton.classList.contains('card__like-button_active');
-    return !likeCheck;
+  like() {
+    this._elementLikeButton.classList.add('card__like-button_active');
   }
 
-   _handleCardLike() {
-    if(this._isNotLiked()) {
-      this._elementLikeButton.classList.add('card__like-button_active')
-      this._api.likeCard(this._cardID)
-        .then(data => {
-          this._elementLikeCounter.textContent = data.likes.length;
-        })
-        .catch(err => console.log(err))
-    }
-    else {
-      this._elementLikeButton.classList.remove('card__like-button_active')
-      this._api.unlikeCard(this._cardID)
-        .then(data => {
-          this._elementLikeCounter.textContent = data.likes.length;
-        })
-        .catch(err => console.log(err))
+  dislike() {
+    this._elementLikeButton.classList.remove('card__like-button_active');
+  }
+
+  likesCounter(likes) {
+    if (likes.length === 0) {
+      this._elementLikeCounter.textContent = "0";
+    } else {
+    this._elementLikeCounter.textContent = likes.length;
     }
   }
 
@@ -84,10 +77,17 @@ class Card {
   
   //слушатели событий
   _setEventListeners() {
-    this._elementLikeButton.addEventListener('click', () => this._handleCardLike());
+    this._elementLikeButton.addEventListener('click', () => {
+      if (this._elementLikeButton.classList.contains('card__like-button_active')) {
+        this._handleDislikeCard();
+      } else {
+        this._handleLikeCard();
+      };
+    });  
     this._elementDeleteButton.addEventListener('click', () => this._handleDeleteClick());
     this._elementCardImage.addEventListener('click', () => this._handleCardClick({name: this._name, link: this._link}));
   }
+  
 };
 
 export { Card };

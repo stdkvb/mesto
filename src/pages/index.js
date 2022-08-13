@@ -8,8 +8,6 @@ import { PopupDeleteCard } from '../components/PopupDeleteCard';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
-
-
 import {
   avatarEditButton,
   popupEditAvatar,
@@ -40,15 +38,16 @@ const api = new Api({
   }
 });
 
-//информация о пользователе с сервера
 let userID;
 const userInfo = new UserInfo(profileInfo);
-api.getUserInfo()
-  .then(data => {
-    userInfo.setUserInfo(data);
-    userID = data._id;
+
+api.getData()
+  .then(([userData, cardsData]) => {
+    userInfo.setUserInfo(userData)
+    userID = userData._id;
+    cardList.setItems(cardsData);
   })
-  .catch(err => {console.log(err)})
+  .catch(err => console.log(err))
 
 //фулсайз картинка
 const popupImage = new PopupWithImage(popupFullSizeImage);
@@ -69,12 +68,30 @@ const createCard = (data) => {
       popupDelete.open();
       popupDelete.setSubmitProcessing(() => {
         api.deleteCard(data._id)
-          .then()
+          .then(() => {
+            card.deleteCard();
+            popupDelete.close();
+          })
           .catch(err => console.log(err));
-        card.deleteCard();
       })
+    },
+    handleLikeCard: () => {
+      api.likeCard(data._id)
+        .then((res) => {
+          card.likesCounter(res.likes);
+          card.like();
+        })
+        .catch(err => console.log(err));
+    },
+    handleDislikeCard: () => {
+      api.dislikeCard(data._id)
+        .then((res) => {
+          card.likesCounter(res.likes);
+          card.dislike();
+        })
+        .catch(err => console.log(err));
     }
-  }, components, cardTemplate, userID, api);
+  }, components, cardTemplate, userID);
   return card.generateCard();
 }
 
@@ -85,11 +102,6 @@ const cardList = new Section({
     cardList.addItem(card);
   }
 }, cardListSelector)
-
-api.getInitialCards()
-  .then((cardsData) => {
-    cardList.setItems(cardsData)
-  })
 
 //редактирование аватара
 const popupFormAvatarEdit = new PopupWithForm(popupEditAvatar, (link) => {

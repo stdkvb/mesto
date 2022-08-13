@@ -6,6 +6,10 @@ class Api {
         this._headers = options.headers
     }
 
+    getData() {
+      return Promise.all([this.getUserInfo(), this.getInitialCards()])
+    }
+
     _errorHandle(res) {
         if(res.ok) {
           return res.json();
@@ -65,7 +69,7 @@ class Api {
     }
 
     deleteCard(id) {
-        return fetch(`${this._baseUrl}/cards${id}`, {
+        return fetch(`${this._baseUrl}/cards/${id}`, {
           method: "DELETE",
           headers: this._headers
         })
@@ -80,7 +84,7 @@ class Api {
           .then(this._errorHandle)
     }
 
-    unlikeCard(id) {
+    dislikeCard(id) {
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
           method: "DELETE",
           headers: this._headers
