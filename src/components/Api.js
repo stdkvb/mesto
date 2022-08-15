@@ -10,7 +10,7 @@ class Api {
       return Promise.all([this.getUserInfo(), this.getInitialCards()])
     }
 
-    _errorHandle(res) {
+    _handleError(res) {
         if(res.ok) {
           return res.json();
         }
@@ -22,7 +22,7 @@ class Api {
           method: "GET",
           headers: this._headers
         })
-          .then(this._errorHandle)
+          .then(this._handleError)
     }
 
     setUserInfo(userInfo) {
@@ -34,7 +34,7 @@ class Api {
             about: userInfo.about
           })
         })
-          .then(this._errorHandle)
+          .then(this._handleError)
     }
 
     editAvatar(link) {
@@ -45,7 +45,7 @@ class Api {
             avatar: link.avatar
           })
         })
-          .then(this._errorHandle)
+          .then(this._handleError)
     }
 
     getInitialCards() {
@@ -53,7 +53,7 @@ class Api {
           method: "GET",
           headers: this._headers
         })
-          .then(this._errorHandle)
+          .then(this._handleError)
     }
 
     addCard(card) {
@@ -65,7 +65,7 @@ class Api {
             link: card.link
           })
         })
-          .then(this._errorHandle)
+          .then(this._handleError)
     }
 
     deleteCard(id) {
@@ -73,7 +73,7 @@ class Api {
           method: "DELETE",
           headers: this._headers
         })
-          .then(this._errorHandle)
+          .then(this._handleError)
     }
 
     likeCard(id) {
@@ -81,7 +81,7 @@ class Api {
           method: "PUT",
           headers: this._headers
         })
-          .then(this._errorHandle)
+          .then(this._handleError)
     }
 
     dislikeCard(id) {
@@ -89,7 +89,7 @@ class Api {
           method: "DELETE",
           headers: this._headers
         })
-          .then(this._errorHandle)
+          .then(this._handleError)
     }
 };
  
